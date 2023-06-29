@@ -24,5 +24,11 @@ public class MemberService {
 		System.out.println("Member DAO login...");
 		return memberDAO.login(id, pw);
 	}
+	
+	public String signUp(String id, String pw)
+	{
+		System.out.println("Member DAO signUp...");
+		return memberDAO.login(id, pw);
+	}
 
 }

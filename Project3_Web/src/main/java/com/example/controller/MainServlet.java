@@ -36,16 +36,38 @@ public class MainServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("doGet() 호출됨");
-		String id = request.getParameter("id");
-		String pw = request.getParameter("pw");
-		
-		String resultMsg = memberService.login(id, pw);
-		PrintWriter out = response.getWriter();
-		out.append(resultMsg);
+		process(request,response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("doPost() 호출됨");
+		process(request,response);
+	}
+	
+	private void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		System.out.println("process() 호출됨");
+		
+		String action = request.getParameter("action");
+		String id = request.getParameter("id");
+		String pw = request.getParameter("pw");
+		
+		if(action != null)
+		{
+			if(action == "login")
+			{
+				String resultMsg = memberService.login(id, pw);
+				PrintWriter out = response.getWriter();
+				out.append(resultMsg);
+			}
+			else if(action == "signUp")
+			{
+				String resultMsg = memberService.signUp(id, pw);
+				PrintWriter out = response.getWriter();
+				out.append(resultMsg);
+			}
+		}
+	
 	}
 
 }
