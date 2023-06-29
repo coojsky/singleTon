@@ -12,7 +12,8 @@ public class MemberDAO {
 	public String login(String id, String pw)
 	{
 		//JDBC
-		return "ok";
+		return "ok"; 
+		
 	}
 
 }

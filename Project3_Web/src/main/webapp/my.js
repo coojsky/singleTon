@@ -1,4 +1,5 @@
-function login()
+async function login()
 {
-	fetch('main', {method:'get'});
+	let response = await fetch('main', {method:'get'});
+	console.log(response);
 }
